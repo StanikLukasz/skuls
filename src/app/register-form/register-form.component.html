@@ -1,0 +1,49 @@
+<form class="form" (ngSubmit)="onSubmit()" #formRef="ngForm" *ngIf="showModal">
+    <h2>Zarejestruj się</h2>
+  
+    <input
+      type="text"
+      placeholder="Imię"
+      [(ngModel)]="registrationData.firstName"
+      name="firstName"
+      required
+    />
+  
+    <input
+      type="text"
+      placeholder="Nazwisko"
+      [(ngModel)]="registrationData.lastName"
+      name="lastName"
+      required
+    />
+  
+    <input
+      type="email"
+      placeholder="Email"
+      [(ngModel)]="registrationData.email"
+      name="email"
+      required
+    />
+  
+    <input
+      type="password"
+      placeholder="Hasło"
+      [(ngModel)]="registrationData.password"
+      name="password"
+      required
+    />
+  
+    <input
+      type="date"
+      placeholder="Data urodzenia"
+      [(ngModel)]="registrationData.birthDate"
+      name="birthDate"
+      required
+    />
+  
+    <button (click)="onSubmit()" class="btn-red" type="submit" [disabled]="formRef.invalid">Zarejestruj się</button>
+    <div>lub</div>
+    <button (click)="closeModal()" class="btn-green" type="reset" [disabled]="formRef.invalid">Zaloguj się</button>
+  </form>
+
+

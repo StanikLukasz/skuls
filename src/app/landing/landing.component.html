@@ -1,0 +1,90 @@
+<div class="container">
+  <app-register-form *ngIf="modalType === 'register'"></app-register-form>
+
+
+  <app-register-form *ngIf="modalType === 'login'"></app-register-form>
+
+    <div class="button-box">
+      <button class="btn-green" (click)="openModal('login')">Zaloguj się</button>
+      <button class="btn-green-invert" (click)="openModal('register')">Zarejestruj się</button>
+    </div>
+
+    <div *ngIf="modalType === 'register'">
+      <form class="form" (ngSubmit)="onSubmit()" #formRef="ngForm" *ngIf="showModal">
+        <h2>Zarejestruj się</h2>
+      
+        <input
+          type="text"
+          placeholder="Imię"
+          [(ngModel)]="registrationData.firstName"
+          name="firstName"
+          required
+        />
+      
+        <input
+          type="text"
+          placeholder="Nazwisko"
+          [(ngModel)]="registrationData.lastName"
+          name="lastName"
+          required
+        />
+      
+        <input
+          type="email"
+          placeholder="Email"
+          [(ngModel)]="registrationData.email"
+          name="email"
+          required
+        />
+      
+        <input
+          type="password"
+          placeholder="Hasło"
+          [(ngModel)]="registrationData.password"
+          name="password"
+          required
+        />
+      
+        <input
+          type="date"
+          placeholder="Data urodzenia"
+          [(ngModel)]="registrationData.birthDate"
+          name="birthDate"
+          required
+        />
+      
+        <button (click)="onSubmit()" class="btn-red" type="submit" [disabled]="formRef.invalid">Zarejestruj się</button>
+        <div>lub</div>
+        <button (click)="closeModal()" class="btn-green" type="reset" [disabled]="formRef.invalid">Zaloguj się</button>
+      </form>
+    
+    
+    
+
+    </div>
+
+
+  
+    <!-- Modal -->
+    <div class="modal" *ngIf="showModal">
+      <div class="form">
+        <h2 *ngIf="modalType === 'login'">Logowanie</h2>  
+        <h2 *ngIf="modalType === 'register'">Rejestracja</h2>  
+        <!-- tu możesz wstawić formularze -->
+         <form>
+            <input *ngIf="modalType === 'login'" placeholder="Email" />
+            <input *ngIf="modalType === 'login'" placeholder="Hasło" type="password" />
+        </form>
+
+        <input *ngIf="modalType === 'register'" placeholder="Email" />
+        <input *ngIf="modalType === 'register'" placeholder="Hasło" type="password" />
+
+        <input *ngIf="modalType === 'register'" placeholder="Hasło"/>
+        <input *ngIf="modalType === 'register'" placeholder="Imię"/>
+        <input *ngIf="modalType === 'register'" placeholder="Nazwisko" />
+        <input *ngIf="modalType === 'register'" placeholder="Data urodzenia" type="date" />
+
+        <button class="btn-red" (click)="closeModal()">Zamknij</button>
+      </div>
+    </div>
+  </div>
