@@ -44,7 +44,7 @@
           name="password"
           required
         />
-      
+
         <input
           type="date"
           placeholder="Data urodzenia"
@@ -54,26 +54,43 @@
         />
       
         <button (click)="onSubmit()" class="btn-red" type="submit" [disabled]="formRef.invalid">Zarejestruj się byq</button>
-        <button class="btn-green" type="reset" [disabled]="formRef.invalid">Zaloguj się</button>
+        <button (click)="closeModal()" class="btn-green" type="button" [disabled]="formRef.invalid">Anuluj</button>
       </form>
 
     </div>
 
 
-  
-    <!-- Modal -->
-    <div class="modal"  *ngIf="modalType === 'login'">
-      <div class="form" *ngIf="modalType === 'login'">
-        <h2 *ngIf="modalType === 'login'">Logowanie</h2>   
-        <!-- tu możesz wstawić formularze -->
-         <form>
-            <input *ngIf="modalType === 'login'" placeholder="Email" />
-            <!-- <input *ngIf="modalType === 'login'" placeholder="Hasło" type="password" /> -->
-        </form>
+    <div *ngIf="modalType === 'login'">
+      <form class="form" (ngSubmit)="onSubmit()" #formRef="ngForm" *ngIf="showModal">
+        <h2>Zaloguj się</h2>
+        <input
+          type="email"
+          placeholder="Email"
+          [(ngModel)]="registrationData.email"
+          name="email"
+          required
+        />
+      
+        <input
+          type="password"
+          placeholder="Hasło"
+          [(ngModel)]="registrationData.password"
+          name="password"
+          required
+        />
+      
+        <button (click)="onSubmit()" class="btn-green" type="submit" [disabled]="formRef.invalid">Zaloguj się</button>
+        <button (click)="closeModal()" class="btn-red" type="button" [disabled]="formRef.invalid">Anuluj</button>
+      </form>
 
-        <button class="btn-red" (click)="closeModal()">Zaloguj się</button>
-        <!-- <button class="btn-red" (click)="closeModal()">Zamknij</button> -->
-      </div>
     </div>
+
   </div>
   ssss
+
+
+
+
+
+
+

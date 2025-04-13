@@ -47,6 +47,8 @@ export class LandingComponent {
     this.http.post(apiUrl, this.registrationData).subscribe({
       next: (response) => { 
         console.log('Sukces!', response);
+        this.showModal = false;
+        this.modalType = null;
       },
       error: (error) => { 
         console.error('Błąd przy wysyłce:', error);
