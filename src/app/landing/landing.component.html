@@ -10,8 +10,9 @@
     </div>
 
     <div *ngIf="modalType === 'register'">
-      <form class="form" (ngSubmit)="onSubmit()" #formRef="ngForm" *ngIf="showModal">
-        <h2>Zarejestruj się</h2>
+      <!-- <form class="form" (ngSubmit)="onSubmit()" #formRef="ngForm" *ngIf="showModal"> -->
+      <form class="form" #formRef="ngForm" *ngIf="showModal">
+          <h2>Zarejestruj się</h2>
       
         <input
           type="text"
@@ -53,7 +54,7 @@
           required
         />
       
-        <button (click)="onSubmit()" class="btn-red" type="submit" [disabled]="formRef.invalid">Zarejestruj się byq</button>
+        <button (click)="onSubmit()" class="btn-red" type="submit" [disabled]="formRef.invalid">Zarejestruj się</button>
         <button (click)="closeModal()" class="btn-green" type="button" [disabled]="formRef.invalid">Anuluj</button>
       </form>
 
@@ -85,15 +86,11 @@
 
     </div>
 
-  </div>
 
 
-  <div class="overlay" *ngIf="show">
-    <div class="modal">
-      <h2>Konto zostało założone!</h2>
-      <button (click)="close()">OK</button>
-    </div>
+
   </div>
+  ssss
 
 
 
